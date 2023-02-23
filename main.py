@@ -94,7 +94,7 @@ class MoviesView(Resource):
         with db.session.begin():
             db.session.add(all_movies)
 
-        return movies_schema.dump(all_movies), 200
+        return '', 201
 
 
 @movie_ns.route('/<int:id>')
@@ -102,7 +102,7 @@ class MovieView(Resource):
 
     def get(self, id):
         movie = db.session.get(id)
-        return movie_schema.dump(movie), 200
+        return movie_schema.dump(movie), 204
 
     def put(self, id):
         movie = Movie.query.get(id)
@@ -117,7 +117,7 @@ class MovieView(Resource):
         db.session.add(movie)
         db.session.commit()
 
-        return movie_schema.dump(movie), 200
+        return movie_schema.dump(movie), 204
 
 
     def patch(self, id):
@@ -142,7 +142,7 @@ class MovieView(Resource):
         db.session.add(movie)
         db.session.commit()
 
-        return movie_schema.dump(movie), 200
+        return movie_schema.dump(movie), 204
 
 
     def delete(self, id):
@@ -178,7 +178,7 @@ class DirectorView(Resource):
         db.session.add(director)
         db.session.commit()
 
-        return '', 200
+        return '', 204
 
 
     def patch(self, id):
@@ -191,7 +191,7 @@ class DirectorView(Resource):
         db.session.add(director)
         db.session.commit()
 
-        return '', 200
+        return '', 204
 
 
     def delete(self, id):
@@ -225,7 +225,7 @@ class GenreView(Resource):
         db.session.add(genre)
         db.session.commit()
 
-        return '', 200
+        return '', 204
 
 
     def patch(self, id):
@@ -238,7 +238,7 @@ class GenreView(Resource):
         db.session.add(genre)
         db.session.commit()
 
-        return '', 200
+        return '', 204
 
 
     def delete(self, id):
