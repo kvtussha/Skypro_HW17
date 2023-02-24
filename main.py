@@ -39,6 +39,8 @@ class MovieSchema(Schema):
     trailer = fields.Str()
     year = fields.Int(validate=validate.Range(min=1900, max=2030))
     rating = fields.Int()
+    genre_id = fields.Int()
+    director_id = fields.Int()
 
 
 class Director(db.Model):
